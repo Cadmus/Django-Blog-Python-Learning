@@ -1,7 +1,7 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class TimeStampedModel(models.Model):
@@ -18,7 +18,7 @@ class Author(models.Model):
                                null=True,
                                blank=True,
                                help_text="Upload your photo for Avatar")
-    about = models.TextField()
+    about = RichTextField()
     website = models.URLField(max_length=200, blank=True, null=True)
 
     def __str__(self):
@@ -63,7 +63,7 @@ class Post(TimeStampedModel):
                               null=True,
                               blank=True,
                               help_text='Optional cover post')
-    description = models.TextField()
+    description = RichTextField()
     tags = models.ManyToManyField('Tag')
     keywords = models.CharField(max_length=200, null=True, blank=True,
                                 help_text='Keywords sparate by comma.')
@@ -92,7 +92,7 @@ class Page(TimeStampedModel):
     author = models.ForeignKey(Author, related_name='author_page', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
-    description = models.TextField()
+    description = RichTextField()
     publish = models.BooleanField(default=True)
 
     def __str__(self):
