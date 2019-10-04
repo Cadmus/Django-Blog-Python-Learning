@@ -4,24 +4,14 @@ from django.contrib.sitemaps import GenericSitemap
 from django.contrib.sitemaps.views import sitemap
 from blog.views import *
 from blog.feed import LatestPosts
+from django.views.generic import TemplateView
+
 
 info_dict = {
     'queryset': Post.objects.all(),
     'date_field': 'modified',
 }
-
-# Removed url pattern for `slug` to `[\w\-]+` and not `\S+`
-# Because it will getting error 404 if use for '/' (homepage) and '/<slug>' (page/else)
-# But, makesure the `url page` placed at the bottom from other urls.
-# Example:
-#   good: r'^(?P<slug>[\w\-]+)/$'
-#   bad: r'^(?P<slug>\S+)/$'
-# thanks to: http://stackoverflow.com/a/30271379/6396981
-
 urlpatterns = [
-    # Handler for Maintenance mode.
-    # path(r'^$', TemplateView.as_view(template_name='maintenance.html', content_type='text/html')),
-
     path('', HomepageView.as_view(), name='homepage'),
     path('blog/<slug:slug>/', DetailPostView.as_view(), name='detail_post_page'),
     path('search/', SearchPostsView.as_view(), name='search_posts_page'),
@@ -37,4 +27,6 @@ urlpatterns = [
     path('contact/', ContactView.as_view(), name='contact_page'),
     path('trending/', TrendingPostsView.as_view(), name='trending_posts_page'),
     path('<slug:slug>/', DetailPageView.as_view(), name='detail_page'),
+    path('about', TemplateView.as_view(template_name='about.html'))
+
 ]

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block pagetitle%} About {% endblock %}
+
+{% block content %}
+
+<!--------------------------------------
+HEADER
+--------------------------------------->
+<div class="container">
+	<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row justify-content-between">
+				<div class="col-md-12 pt-6 pb-6 pr-6 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+						<a class="text-danger" href="#">EPICUPS</a>
+					</p>
+					<h3 class="font-weight-bold">Who are we?</h3>
+					<p class="mb-3">
+						<article class="article-post">
+                            <p style="text-align: justify;">
+                                EpiCups is an online forum, which is committed to help young developers out at their conquest of developing something new and various applications in the field of computer science. Are you feeling lost in the field of Programming Languages or finding it difficult to implement what you have learnt? Do not worry, as we are here to help you out with the understanding of programming languages like Python; help you with web development with the help of Django, various articles on machine learning to keep you updated in the field of Computer science.
+                            </p
+			            </article>
+					</p>
+
+                    <h3 class="font-weight-bold">What is EpiCups?</h3>
+					<p class="mb-3">
+						<article class="article-post">
+                            <p style="text-align: justify;">
+                                With its inception in July 2018, EpiCups is an online forum for the bright minds of Computer Science. We are known for our innovative articles on Python programming, which will help you for your programming purposes, Django web framework that will help you for web development, etc. our forum has discussions on wide topics ranging from Amazon Web Services to Google Cloud services. Want to know the other fields of study of our forum? Our articles are also based on the study of Azure Services, Databases, Angular, and Node Js etc. We also have a segment where we present weekly solutions on different new things related to computer science application.
+                            </p
+			            </article>
+					</p>
+
+                    <h3 class="font-weight-bold">What is our aim?</h3>
+					<p class="mb-3">
+						<article class="article-post">
+                            <p style="text-align: justify;">
+                                Our aim is to help all the young minds out in the field of Computer Science to pursue with their passion and dream of being a developer and integrate new things in the field. We are like the backbone to the study of the various fields of Computer Science like Amazon Web Services, Google Cloud Services, Azure Services, Python Programing, Django Framework, Ionic Framework, Databases, Angular and Node Js Etc. We strive for building a better world with greater knowledge on these sciences and hope to bridge the gap between the knowledge and the different aspects of application. How would you like to know more about your interests? Visit our blogs and be a participant to the different discussions, which will enlighten you with great knowledge.
+                            </p
+			            </article>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End Header -->
+
+<div class="container pt-4 pb-4">
+	<div class="border p-5 bg-lightblue">
+		<div class="row justify-content-between">
+			<div class="col-md-6">
+				<h5 class="font-weight-bold secondfont">Become a member</h5>
+				 Get the latest news right in your inbox. It's free and you can unsubscribe at any time. We hate spam as much as we do, so we never spam!
+			</div>
+			<div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-md-12">
+                            <input type="email" class="form-control" placeholder="Enter Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-3">
+                        <button type="submit" class="btn btn-success btn-block">Subscribe</button>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

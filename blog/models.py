@@ -71,6 +71,8 @@ class Post(TimeStampedModel):
 
     publish = models.BooleanField(default=True)
     objects = PostQuerySet.as_manager()
+    image_link = models.URLField(verbose_name="Image Url Link")
+    video_link = models.URLField(verbose_name="Video Url Linl")
 
     def get_absolute_path(self):
         return reverse('detail_post_page', kwargs={'slug': self.slug})
