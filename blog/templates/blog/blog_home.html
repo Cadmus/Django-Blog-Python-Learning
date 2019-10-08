@@ -80,14 +80,14 @@
 						<a class="text-dark" href="{% url 'detail_post_page' slug=object.slug %}">{{ object.title }}</a>
 						</h2>
 						<p>
-							{{ object.description|safe|striptags|truncatewords:"50"|linebreaks }}
+							{{ object.description|safe|striptags|truncatewords:"30"|linebreaks }}
 						</p>
 						<div class="card-text text-muted small">
 							{{ object.author }} in   {% for tag in object.tags.all %}
          							 <a href="{% url 'tag_posts_page' slug=tag.slug %}">#{{ tag }}</a>
 							{% if not forloop.last %}, {% endif %} {% endfor %}
 						</div>
-						<small class="text-muted">Dec 12 &middot; 5 min read</small>
+						<small class="text-muted">{{object.created|timesince}} ago: {{object.reading_time}} min read</small>
 					</div>
 					<img height="120" src="{{object.image_link}}">
 				</div>

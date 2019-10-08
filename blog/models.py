@@ -73,6 +73,11 @@ class Post(TimeStampedModel):
     objects = PostQuerySet.as_manager()
     image_link = models.URLField(verbose_name="Image Url Link")
     video_link = models.URLField(verbose_name="Video Url Linl")
+    reading_time = models.IntegerField(verbose_name="Reading time", default=1)
+    is_trending = models.BooleanField(default=False)
+    is_popular = models.BooleanField(default=False)
+    is_author_sugg = models.BooleanField(default=False)
+
 
     def get_absolute_path(self):
         return reverse('detail_post_page', kwargs={'slug': self.slug})

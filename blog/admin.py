@@ -69,7 +69,7 @@ class TagAdminForm(forms.ModelForm):
             post.save()
 
         if post.pk:
-            post.tags = self.cleaned_data['tags']
+            post.tags.set(self.cleaned_data['tags'])
             self.save_m2m()
         return post
 
