@@ -56,6 +56,10 @@ class HomepageView(generic.ListView):
             self.paginate_by,
             self.request.GET.get('page')
         ).get_page_range()
+        popular_posts = Post.objects.filter(is_popular=True).order_by('created')
+        context_data['popular_posts'] = popular_posts
+        context_data['trending_blogs'] = Post.objects.filter(is_trending=True).order_by('created')[:3]
+        context_data['author_selected'] = Post.objects.filter(is_author_sugg=True).order_by('created').first()
         return context_data
 
 
