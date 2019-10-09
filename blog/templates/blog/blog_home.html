@@ -28,19 +28,22 @@
 			<div class="col-lg-6">
 				<h5 class="font-weight-bold spanborder"><span>Trending Blogs</span></h5>
 				<div class="flex-md-row mb-4 box-shadow h-xl-300">
-					<div class="mb-3 d-flex align-items-center">
-						<img height="80" src="{% static "assets/img/demo/blog4.jpg" %}">
-						<div class="pl-3">
-							<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="./article.html">Nasa's IceSat space laser makes height maps of Earth</a>
-							</h2>
-							<div class="card-text text-muted small">
-								 Jake Bittle in LOVE/HATE
+					{% for tr_blog in  trending_blogs%}
+						<div class="mb-3 d-flex align-items-center">
+							<img height="80" src="{{tr_blog.image_link}}">
+							<div class="pl-3">
+								<h2 class="mb-2 h6 font-weight-bold">
+								<a class="text-dark" href="{% url 'detail_post_page' slug=tr_blog.slug %}">{{tr_blog.title}}</a>
+								</h2>
+								<div class="card-text text-muted small">
+									 {{ tr_blog.author }} in   {% for tag in tr_blog.tags.all %}
+         							 	<a href="{% url 'tag_posts_page' slug=tag.slug %}">#{{ tag }}</a>
+									 {% if not forloop.last %}, {% endif %} {% endfor %}
+								</div>
+								<small class="text-muted">{{author_selected.created | date:"M d"}} &middot; {{author_selected.reading_time}} min read</small>
 							</div>
-							<small class="text-muted">Dec 12 &middot; 5 min read</small>
 						</div>
-					</div>
-
+					{% endfor %}
 				</div>
 			</div>
 		{% endif %}
