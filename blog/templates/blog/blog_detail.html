@@ -1,11 +1,10 @@
 {% extends "base.html" %}
-{% load staticfiles %}
-{% block title %}{{ object.title }} - {{ block.super }}{% endblock %}
+{% load static %}
+{% block pagetitle %}{{ object.title }} - {{ block.super }}{% endblock %}
 {% block canonical_url %}https://{{ request.get_host }}{% url 'detail_post_page' slug=object.slug %}{% endblock %}
 
 
 {% block content %}
-
 <!--------------------------------------
 HEADER
 --------------------------------------->
@@ -15,15 +14,15 @@ HEADER
 			<div class="row justify-content-between">
 				<div class="col-md-12 pt-12 pb-12 pr-12 align-self-center">
 					<p class="text-uppercase font-weight-bold">
-						<a class="text-danger" href="./category.html">Stories</a>
+						<a class="text-danger" href="./category.html">Stories {{object.next}}</a>
 					</p>
-					<h1 class="display-4 secondfont mb-3 font-weight-bold">Sterling could jump 8% if Brexit deal gets approved by UK Parliament</h1>
+					<h1 class="display-4 secondfont mb-3 font-weight-bold">{{object.title}}</h1>
 					<p class="mb-3">
 						 Analysts told CNBC that the currency could hit anywhere between $1.35-$1.40 if the deal gets passed through the U.K. parliament.
 					</p>
 					<div class="d-flex align-items-center">
-						<img class="rounded-circle" src="assets/img/demo/avatar2.jpg" width="70">
-						<small class="ml-2">Jane Seymour <span class="text-muted d-block">A few hours ago &middot; 5 min. read</span>
+						<img class="rounded-circle" src="{{object.image_link}}" width="70">
+						<small class="ml-2">{{object.author}} <span class="text-muted d-block"> {{object.created | timesince}} ago&middot; {{object.reading_time}} min. read</span>
 						</small>
 					</div>
 				</div>
@@ -36,32 +35,11 @@ HEADER
 <!--------------------------------------
 MAIN
 --------------------------------------->
-
-
 <div class="container pt-4 pb-4">
 	<div class="row justify-content-center">
-		<div class="col-md-12 col-lg-12">
-          <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_default_style" style="bottom:0px; left:50%; transform:translateX(-50%);">
-    <a class="a2a_button_facebook"></a>
-    <a class="a2a_button_twitter"></a>
-    <a class="a2a_button_pinterest"></a>
-    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-</div>
-
-<script async src="https://static.addtoany.com/menu/page.js"></script>
+		<div class="col-md-12 col-lg-10">
 			<article class="article-post">
-			<p>
-				 Holy grail funding non-disclosure agreement advisor ramen bootstrapping ecosystem. Beta crowdfunding iteration assets business plan paradigm shift stealth mass market seed money rockstar niche market marketing buzz market.
-			</p>
-			<p>
-				 Burn rate release facebook termsheet equity technology. Interaction design rockstar network effects handshake creative startup direct mailing. Technology influencer direct mailing deployment return on investment seed round.
-			</p>
-			<p>
-				 Termsheet business model canvas user experience churn rate low hanging fruit backing iteration buyer seed money. Virality release launch party channels validation learning curve paradigm shift hypotheses conversion. Stealth leverage freemium venture startup business-to-business accelerator market.
-			</p>
-			<p>
-				 Freemium non-disclosure agreement lean startup bootstrapping holy grail ramen MVP iteration accelerator. Strategy market ramen leverage paradigm shift seed round entrepreneur crowdfunding social proof angel investor partner network virality.
-			</p>
+				{{ object.description|safe }}
 			</article>
 			<div class="border p-5 bg-lightblue">
 				<div class="row justify-content-between">
